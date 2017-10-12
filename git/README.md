@@ -19,7 +19,7 @@ Unset proxy:
 git config --global --unset http.proxy
 ```
 
-Use the currently set proxy:
+Print out the currently set proxy:
 ```bash
 git config --global --get http.proxy
 ```
