@@ -50,6 +50,7 @@ user=txuantu
 ```
 
 #### 3.2. Init your mysql database
+ - Specify mysql path and mysql home directory
 ```bash
 #!/usr/bin/env bash
 
@@ -57,29 +58,20 @@ export MYSQL_HOME=/Users/txuantu/Documents/Tools/mysql
 export BASE_DIR=$MYSQL_HOME
 export DATADIR=$BASE_DIR/data
 export PATH=$MYSQL_HOME/bin:$PATH
-
+```
+ - Initalize mysql db
+```bash
 mysql_install_db --basedir=$BASE_DIR --datadir=$DATADIR
 ``` 
 
 #### 3.3. Start your mysql server
 ```bash
-#!/usr/bin/env bash
-
-export MYSQL_HOME=/Users/txuantu/Documents/Tools/mysql
-export BASE_DIR=$MYSQL_HOME
-export DATADIR=$BASE_DIR/data
-export PATH=$MYSQL_HOME/bin:$PATH
-
 mysqld --basedir=$MYSQL_HOME --datadir=$BASE_DIR/data --log-error=$BASE_DIR/data/mysql.err --pid-file=$BASE_DIR/mysql.pid --socket=$BASE_DIR/thesock --port=3306 -u txuantu --skip-grant-tables &
 ```
  - To ignore authentication issue at the beginning, we use: --skip-grant-tables. We should add new account to sys table later on and remove this option next run
 
  - Set password for root user
 ```bash
-export MYSQL_HOME=/Users/txuantu/Documents/Tools/mysql
-export BASE_DIR=/Users/txuantu/Documents/Tools/mysql
-export PATH=$MYSQL_HOME/bin:$PATH
-
 mysql --socket=$BASE_DIR/thesock
 
 # in mysql console
@@ -112,25 +104,11 @@ quit
 
 #### 3.4. Shutdown your mysql server
 ```bash
-#!/usr/bin/env bash
-
-export MYSQL_HOME=/Users/txuantu/Documents/Tools/mysql
-export BASE_DIR=$MYSQL_HOME
-export DATADIR=$BASE_DIR/data
-export PATH=$MYSQL_HOME/bin:$PATH
-
 mysqladmin --socket=$BASE_DIR/thesock shutdown
 ```
 
 #### 3.5. Open mysql terminal
 ```bash
-#!/usr/bin/env bash
-
-export MYSQL_HOME=/Users/txuantu/Documents/Tools/mysql
-export BASE_DIR=$MYSQL_HOME
-export DATADIR=$BASE_DIR/data
-export PATH=$MYSQL_HOME/bin:$PATH
-
 mysql --socket=$BASE_DIR/thesock
 ```
 
