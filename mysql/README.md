@@ -76,16 +76,30 @@ mysqld --basedir=$MYSQL_HOME --datadir=$BASE_DIR/data --log-error=$BASE_DIR/data
 
  - Set password for root user
 ```bash
-
+export MYSQL_HOME=/Users/txuantu/Documents/Tools/mysql
 export BASE_DIR=/Users/txuantu/Documents/Tools/mysql
+export PATH=$MYSQL_HOME/bin:$PATH
+
 mysql --socket=$BASE_DIR/thesock
 
 # in mysql console
 UPDATE user SET authentication_string = PASSWORD('root@123') WHERE User = 'root';
 
-# then quit mysql and remove: --skip-grant-tables and restart mysql server
+quit
+```
+
+ - Now quit mysql and remove: --skip-grant-tables and restart mysql server
+```bash
+# shut it down first
+mysqladmin --socket=$BASE_DIR/thesock shutdown
+
+# start it again without --skip-grant-tables
+mysqld --basedir=$MYSQL_HOME --datadir=$BASE_DIR/data --log-error=$BASE_DIR/data/mysql.err --pid-file=$BASE_DIR/mysql.pid --socket=$BASE_DIR/thesock --port=3306 -u txuantu &
+
+# launch mysql console again
 mysql --socket=$BASE_DIR/thesock -u root -p
 
+# try simple statement
 show databases;
 # will get this error: ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
 
