@@ -74,6 +74,28 @@ mysqld --basedir=$MYSQL_HOME --datadir=$BASE_DIR/data --log-error=$BASE_DIR/data
 ```
  - To ignore authentication issue at the beginning, we use: --skip-grant-tables. We should add new account to sys table later on and remove this option next run
 
+ - Set password for root user
+```bash
+
+export BASE_DIR=/Users/txuantu/Documents/Tools/mysql
+mysql --socket=$BASE_DIR/thesock
+
+# in mysql console
+UPDATE user SET authentication_string = PASSWORD('root@123') WHERE User = 'root';
+
+# then quit mysql and remove: --skip-grant-tables and restart mysql server
+mysql --socket=$BASE_DIR/thesock -u root -p
+
+show databases;
+# will get this error: ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
+
+# reset root password
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
+
+quit
+```
+
+
 #### 3.4. Shutdown your mysql server
 ```bash
 #!/usr/bin/env bash
@@ -111,7 +133,7 @@ export DATADIR=$BASE_DIR/data
 export PATH=$MYSQL_HOME/bin:$PATH
 
 # make alias
-alias start_mysql='mysqld --basedir=$MYSQL_HOME --datadir=$BASE_DIR/data --log-error=$BASE_DIR/data/mysql.err --pid-file=$BASE_DIR/mysql.pid --socket=$BASE_DIR/thesock --port=3306 -u txuantu --skip-grant-tables &'
+alias start_mysql='mysqld --basedir=$MYSQL_HOME --datadir=$BASE_DIR/data --log-error=$BASE_DIR/data/mysql.err --pid-file=$BASE_DIR/mysql.pid --socket=$BASE_DIR/thesock --port=3306 -u txuantu &'
 alias stop_mysql='mysqladmin --socket=$BASE_DIR/thesock shutdown'
 alias mysql='mysql --socket=$BASE_DIR/thesock'
 alias mysql_config='mysql_config --socket=$BASE_DIR/thesock'
