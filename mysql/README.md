@@ -69,9 +69,7 @@ mysql_install_db --basedir=$BASE_DIR --datadir=$DATADIR
 mysqld --basedir=$MYSQL_HOME --datadir=$BASE_DIR/data --log-error=$BASE_DIR/data/mysql.err --pid-file=$BASE_DIR/mysql.pid --socket=$BASE_DIR/thesock --port=3306 -u txuantu --skip-grant-tables &
 ```
 
-<aside class="notice">
-To ignore authentication issue at the beginning, we use: --skip-grant-tables. However this action is too dangerous, it allows anyone to connect to all databases with no restriction without a user and password. It must be used carefully and MOST be reverted quickly to avoid risks.
-</aside> 
+`To ignore authentication issue at the beginning, we use: --skip-grant-tables. However this action is too dangerous, it allows anyone to connect to all databases with no restriction without a user and password. It must be used carefully and MOST be reverted quickly to avoid risks.`
 
  - Set password for root user
 ```bash
