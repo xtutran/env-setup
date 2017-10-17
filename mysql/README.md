@@ -25,7 +25,7 @@ ln -s mysql-5.7.20-macos10.12-x86_64 mysql
 #### 3.1. Create your own mysql conf insde your msql directory
 ```bash
 cd mysql
-vi my.conf
+vi my.cnf
 ```
 
 - Here is my sample
@@ -120,13 +120,26 @@ vi ~/.bashrc
  - Here is my sample
 ```bash
 export MYSQL_HOME=/Users/txuantu/Documents/Tools/mysql
-export BASE_DIR=$MYSQL_HOME
-export DATADIR=$BASE_DIR/data
 export PATH=$MYSQL_HOME/bin:$PATH
 
 # make alias
-alias start_mysql='mysqld --basedir=$MYSQL_HOME --datadir=$BASE_DIR/data --log-error=$BASE_DIR/data/mysql.err --pid-file=$BASE_DIR/mysql.pid --socket=$BASE_DIR/thesock --port=3306 -u txuantu &'
-alias stop_mysql='mysqladmin --socket=$BASE_DIR/thesock shutdown'
-alias mysql='mysql --socket=$BASE_DIR/thesock'
-alias mysql_config='mysql_config --socket=$BASE_DIR/thesock'
+alias mysqld='mysqld --defaults-file=$MYSQL_HOME/my.cnf &'
+alias mysqladmin='mysqladmin --defaults-file=$MYSQL_HOME/my.cnf'
+alias mysql='mysql --defaults-file=$MYSQL_HOME/my.cnf'
+alias mysql_config='mysql_config --defaults-file=$MYSQL_HOME/my.cnf'
+```
+
+ - Enjoy your mysql server!
+```bash
+# apply new change
+source ~/.bashrc
+
+# to start mysql
+mysqld
+
+# to shutdown mysql
+mysqladmin shutdown
+
+# to launch mysql console
+mysql -u root -p
 ```
