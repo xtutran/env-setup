@@ -1,2 +1,2 @@
 # env-setup
-How to install some software without Administrator privileges in Linux
+How to install some softwares without Administrator privileges in Linux
