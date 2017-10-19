@@ -24,3 +24,17 @@ Print out the currently set proxy:
 git config --global --get http.proxy
 ```
 
+## Remove `.DS_Store` in MacBook git
+ - Find and remove `.DS_Store` in current repo
+```bash
+find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch
+```
+
+ - Add global .gitignore
+```bash
+echo ".DS_Store" >> ~/.gitignore_global
+echo "._.DS_Store" >> ~/.gitignore_global
+echo "**/.DS_Store" >> ~/.gitignore_global
+echo "**/._.DS_Store" >> ~/.gitignore_global
+git config --global core.excludesfile ~/.gitignore_global
+```
