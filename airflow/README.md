@@ -13,7 +13,8 @@ pip install mysqlclient
 
  - Create airflow db
 ```bash
-./create_db.sh
+chmod +x scripts/create_db.sh
+. scripts/create_db.sh
 ```
 
  - Test mysql-python connection
