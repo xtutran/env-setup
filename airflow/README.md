@@ -38,7 +38,7 @@ pip install "pip install airflow[celery,mysql]"
 ```
 
  - Config airflow
- - a. Initialize an airflow home
+###### a. Initialize an airflow home
 ```bash
 export AIRFLOW_HOME=~/airflow
 export PATH=/Users/txuantu/anaconda2/lib/python2.7/site-packages/airflow/bin:$PATH
@@ -46,7 +46,7 @@ export PATH=/Users/txuantu/anaconda2/lib/python2.7/site-packages/airflow/bin:$PA
 airflow version
 ```
 
- - b. Go to airflow home and config mysql connection
+###### b. Go to airflow home and config mysql connection
 ```bash
 cd $AIRFLOW_HOME
 vi airflow.cfg
@@ -65,12 +65,12 @@ executor = CeleryExecutor
 sql_alchemy_conn = mysql://airflow:airflow@localhost/airflow
 ```
 
- - c. Initialise db connection
+###### c. Initialise db connection
 ```bash
 airflow initdb
 ```
 
- - d. Launch airflow webserver
+###### d. Launch airflow webserver
 ```bash
 airflow webserver
 ```
