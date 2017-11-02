@@ -75,3 +75,6 @@ airflow initdb
 airflow webserver
 ```
 
+```bash
+ariflow worker
+```
