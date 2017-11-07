@@ -9,7 +9,7 @@ jupyter notebook --generate-config
 
  - Create notebook password
 ```bash
-
+jupyter notebook password
 ```
 
  - Create ssl certificate to enable HTTPS 
