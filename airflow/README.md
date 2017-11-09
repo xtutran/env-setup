@@ -54,7 +54,7 @@ cd $AIRFLOW_HOME
 vi airflow.cfg
 ```
 
-Sample with default mysql
+ - Default mysql
 ```bash
 # The executor class that airflow should use. Choices include
 # SequentialExecutor, LocalExecutor, CeleryExecutor
@@ -75,7 +75,7 @@ broker_url = sqla+mysql://airflow:airflow@localhost:3306/airflow
 celery_result_backend = db+mysql://airflow:airflow@localhost:3306/airflow
 ```
 
-Sample with mannual mysql
+ - Mannual mysql
 ```bash
 # The executor class that airflow should use. Choices include
 # SequentialExecutor, LocalExecutor, CeleryExecutor
@@ -85,7 +85,7 @@ executor = CeleryExecutor
 # The SqlAlchemy connection string to the metadata database.
 # SqlAlchemy supports many different database engine, more information
 # their website
-sql_alchemy_conn = mysql+mysqldb:://airflow:airflow@localhost/airflow?unix_socket=/path/to/thesock
+sql_alchemy_conn = mysql+mysqldb://airflow:airflow@localhost/airflow?unix_socket=/path/to/thesock
 
 # The Celery broker URL. Celery supports RabbitMQ, Redis and experimentally
 # a sqlalchemy database. Refer to the Celery documentation for more
