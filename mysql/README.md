@@ -121,6 +121,7 @@ vi ~/.bashrc
  - Here is my sample
 ```bash
 export MYSQL_HOME=/Users/txuantu/Documents/Tools/mysql
+export LD_LIBRARY_PATH=$MYSQL_HOME/lib
 export PATH=$MYSQL_HOME/bin:$PATH
 
 # make alias
@@ -144,3 +145,36 @@ mysqladmin shutdown
 # to launch mysql console
 mysql -u root -p
 ```
+
+#### 3.7. Test mysql-python connection
+ - Requirements
+```bash
+pip install mysql-python
+pip install mysqlclient
+pip install sqlalchemy
+```
+
+ - Simple Python
+```python
+from sqlalchemy import create_engine
+ 
+eng = create_engine('mysql://<username>:<password>@localhost:3306/<databasename>?unix_socket=/path/to/thesock')
+with eng.connect() as con:
+   
+    rs = con.execute('SELECT 6')
+       
+    data = rs.fetchone()[0]
+   
+    print "Data: %s" % data
+```
+ - Python pandas
+```python
+from pandas.io import sql
+from sqlalchemy import create_engine
+ 
+eng = create_engine('mysql://<username>:<password>@localhost:3306/<databasename>?unix_socket=/path/to/thesock')
+cnx = eng.raw_connection()
+xx = sql.read_frame("SELECT * FROM <tablename>", cnx)
+cnx.close()
+```
+
