@@ -54,7 +54,7 @@ cd $AIRFLOW_HOME
 vi airflow.cfg
 ```
 
-Sample with default mysql:
+Sample with default mysql
 ```bash
 # The executor class that airflow should use. Choices include
 # SequentialExecutor, LocalExecutor, CeleryExecutor
