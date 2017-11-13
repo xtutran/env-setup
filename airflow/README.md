@@ -73,6 +73,23 @@ broker_url = sqla+mysql://airflow:airflow@localhost:3306/airflow
 
 # Another key Celery setting
 celery_result_backend = db+mysql://airflow:airflow@localhost:3306/airflow
+
+[webserver]
+# The base url of your website as airflow cannot guess what domain or
+# cname you are using. This is used in automated emails that
+# airflow sends to point links to the right web server
+base_url = http://localhost:443
+
+# The ip specified when starting the web server
+web_server_host = 0.0.0.0
+
+# The port on which to run the web server
+web_server_port = 443
+
+# Paths to the SSL certificate and key for the web server. When both are
+# provided SSL will be enabled. This does not change the web server port.
+web_server_ssl_cert = ~/airflow/mycert.pem
+web_server_ssl_key = ~/airflow/mykey.key
 ```
 
  - Mannual mysql
