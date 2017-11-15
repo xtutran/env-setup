@@ -12,3 +12,7 @@ curl -O --proxy <[protocol://][user:password@]proxyhost[:port]> <link to downloa
 pip install --proxy=http://[user:password@]<proxy server>:8080 xgboost
 ```
 
+## Forward a port from remote server to localhost
+```bash
+ssh -L <local port>:localhost:<remote port> <remote server>
+```
