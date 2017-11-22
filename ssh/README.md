@@ -18,12 +18,12 @@ ssh -p 3022 cloudera@127.0.0.1 mkdir -p .ssh
 
 ### 4. Upload Generated Public Keys from Client to Remote machine 
 ```bash
-cat .ssh/id_rsa.pub | ssh -p 3022 cloudera@127.0.0.1 'cat >> .ssh/authorized_keys'
+cat ~/.ssh/id_rsa.pub | ssh -p 3022 cloudera@127.0.0.1 'cat >> ~/.ssh/authorized_keys'
 ```
 
 ### 5. Set Permissions on Remote machine
 ```bash
-ssh -p 3022 cloudera@127.0.0.1 "chmod 700 .ssh; chmod 640 .ssh/authorized_keys"
+ssh -p 3022 cloudera@127.0.0.1 "chmod 700 .ssh; chmod 640 ~/.ssh/authorized_keys"
 ```
 
 ### 5. Make an alias for Remote server
