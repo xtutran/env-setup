@@ -5,6 +5,9 @@ curl -O <link to download>
 
 # with proxy
 curl -O --proxy <[protocol://][user:password@]proxyhost[:port]> <link to download>
+
+# if your password contain special character like '@'
+curl -O http://proxy_server:proxy_port --proxy-user username:password <link to download>
 ```
 
 ## Pip install with proxy
