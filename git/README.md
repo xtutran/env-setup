@@ -59,4 +59,9 @@ git config --global core.excludesfile ~/.gitignore_global
  git push origin --force --all
  ```
  
+ - Undo delete
+ ```bash
+ git reset --hard refs/original/refs/heads/master
+ ```
+ 
  - Tell your collaborators to rebase, not merge
