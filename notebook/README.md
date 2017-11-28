@@ -47,3 +47,13 @@ c.NotebookApp.open_browser = False
 c.NotebookApp.port = 8888
 ```
 
+### 3. Start/Stop server
+```bash
+. deploy/start.sh
+```
+
+```bash
+. deploy/stop.sh
+```
+
+
