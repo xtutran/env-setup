@@ -3,7 +3,7 @@
 Example: SSH password-less automatic login from localhost to Cloudera-VM  with user cloudera.
 ```
 SSH Client : localhost ( MacOS  )
-SSH Remote Host : 127.0.0.1 ( RedHat - cloudera-vm )
+SSH Remote Host : 127.0.0.1 ( RedHat - cloudera-vm ) forward port 22 to 3022 in Client
 ```
 
 ### 2. Create Authentication SSH-Kegen Keys on Client machine
@@ -13,17 +13,17 @@ ssh-keygen -t rsa
 
 ### 3. Create .ssh Directory on Remote machine
 ```bash
-ssh cloudera@127.0.0.1 mkdir -p .ssh
+ssh -p 3022 cloudera@127.0.0.1 mkdir -p .ssh
 ```
 
 ### 4. Upload Generated Public Keys from Client to Remote machine 
 ```bash
-cat .ssh/id_rsa.pub | ssh cloudera@127.0.0.1 'cat >> .ssh/authorized_keys'
+cat ~/.ssh/id_rsa.pub | ssh -p 3022 cloudera@127.0.0.1 'cat >> ~/.ssh/authorized_keys'
 ```
 
 ### 5. Set Permissions on Remote machine
 ```bash
-ssh cloudera@127.0.0.1 "chmod 700 .ssh; chmod 640 .ssh/authorized_keys"
+ssh -p 3022 cloudera@127.0.0.1 "chmod 700 .ssh; chmod 640 ~/.ssh/authorized_keys"
 ```
 
 ### 5. Make an alias for Remote server
@@ -31,7 +31,6 @@ ssh cloudera@127.0.0.1 "chmod 700 .ssh; chmod 640 .ssh/authorized_keys"
 vi ~/.ssh/config
 ```
 
- * 3022 is forwarding port of 22 from VM to my local machine
 ```
 Host cloudera-vm
     HostName 127.0.0.1

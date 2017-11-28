@@ -38,3 +38,30 @@ echo "**/.DS_Store" >> ~/.gitignore_global
 echo "**/._.DS_Store" >> ~/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
 ```
+## Permanently delete sentive file/folder which be uploaded accidently, [ref](https://help.github.com/articles/removing-sensitive-data-from-a-repository/)
+ 
+ - Force delete file
+ ```bash
+ git filter-branch --force --index-filter \
+ 'git rm --cached --ignore-unmatch YOUR_FILE' \
+ --prune-empty --tag-name-filter cat -- --all
+ ```
+ 
+ - Force delete folder
+ ```bash
+ git filter-branch --force --index-filter \
+ 'git rm -r --cached --ignore-unmatch YOUR_FOLDER' \
+ --prune-empty --tag-name-filter cat -- --all
+ ```
+ 
+ - Force push to overwrite your repo
+ ```bash
+ git push origin --force --all
+ ```
+ 
+ - Undo delete
+ ```bash
+ git reset --hard refs/original/refs/heads/master
+ ```
+ 
+ - Tell your collaborators to rebase, not merge
