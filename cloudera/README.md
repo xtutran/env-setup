@@ -25,7 +25,7 @@
    VBoxManage modifyvm cloudera-quickstart-vm-5.12 --name cloudera-5.12
 
    # 3. Forward port
-   VBoxManage modifyvm myserver --natpf1 "ssh,tcp,,3022,,22"
+   VBoxManage modifyvm cloudera-5.12 --natpf1 "ssh,tcp,,3022,,22"
 
    # 4. Start VM in headless mode
    VBoxManage startvm cloudera-5.12 --type headless
