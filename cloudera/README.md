@@ -16,7 +16,7 @@
    shutdown -h now
    ```
 
-   * Forward SSH port (22) from VM to local machine
+   * Forward SSH port (22) from VM to local machine (only need with NAT network)
    ```
    # 1. List virtual machines
    VBoxManage list vms #"cloudera-quickstart-vm-5.12" {e4b0c92c-4301-4a7d-8af8-fe02fed00451}
