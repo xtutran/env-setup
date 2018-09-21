@@ -16,7 +16,7 @@
    shutdown -h now
    ```
 
-   * Forward SSH port (22) from VM to local machine
+   * Forward SSH port (22) from VM to local machine (*only need with NAT network*)
    ```
    # 1. List virtual machines
    VBoxManage list vms #"cloudera-quickstart-vm-5.12" {e4b0c92c-4301-4a7d-8af8-fe02fed00451}
@@ -25,7 +25,7 @@
    VBoxManage modifyvm cloudera-quickstart-vm-5.12 --name cloudera-5.12
 
    # 3. Forward port
-   VBoxManage modifyvm myserver --natpf1 "ssh,tcp,,3022,,22"
+   VBoxManage modifyvm cloudera-5.12 --natpf1 "ssh,tcp,,3022,,22"
 
    # 4. Start VM in headless mode
    VBoxManage startvm cloudera-5.12 --type headless
